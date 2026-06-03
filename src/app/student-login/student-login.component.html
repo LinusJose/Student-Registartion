@@ -1,1 +1,10 @@
-<p>student-login works!</p>
+<div>
+  <h2>Login</h2>
+  
+  <!-- #user and #pass are nickname tags that store whatever is typed in them -->
+  <input #user type="text" placeholder="Username"><br><br>
+  <input #pass type="password" placeholder="Password"><br><br>
+  
+  <!-- We send the values of the inputs directly to the TS function when clicked -->
+  <button (click)="onLogin(user.value, pass.value)">Login</button>
+</div>

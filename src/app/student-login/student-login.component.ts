@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './student-login.component.html',
   styleUrl: './student-login.component.css',
 })
-export class StudentLogin {}
+export class StudentLogin {
+  // This function takes the username and password values from HTML and alerts them
+  onLogin(user: string, pass: string) {
+    alert(`Logged in with:\nUsername: ${user}\nPassword: ${pass}`);
+  }
+}
