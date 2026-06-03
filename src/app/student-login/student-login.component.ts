@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-login',
@@ -7,8 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './student-login.component.css',
 })
 export class StudentLogin {
-  // This function takes the username and password values from HTML and alerts them
+  private readonly router = inject(Router);
+
   onLogin(user: string, pass: string) {
-    alert(`Logged in with:\nUsername: ${user}\nPassword: ${pass}`);
+    this.router.navigate(['/student-dashboard']);
   }
 }
