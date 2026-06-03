@@ -1,8 +1,8 @@
-/* Reverts the background back to default white */
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
-  color: #000000;
-  font-family: sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
 }

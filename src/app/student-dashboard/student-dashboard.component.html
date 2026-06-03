@@ -1,1 +1,65 @@
-<p>student-dashboard works!</p>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-left">
+      <h1>Student Registry</h1>
+      <p class="subtitle">Real-time student enrollment and records system</p>
+    </div>
+    <div class="header-right">
+      <button class="btn btn-secondary" (click)="fetchStudents()">
+        🔄 Refresh
+      </button>
+    </div>
+  </header>
+
+
+  <main class="dashboard-content">
+    <div *ngIf="isLoading()" class="loading-wrapper">
+      <div class="spinner"></div>
+      <p>Retrieving student profiles...</p>
+    </div>
+
+    <div *ngIf="errorMessage() && !isLoading()" class="error-card">
+      <div class="error-icon">⚠️</div>
+      <div class="error-info">
+        <h3>Connection Error</h3>
+        <p>{{ errorMessage() }}</p>
+        <button class="btn btn-primary" (click)="fetchStudents()">Try Again</button>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading() && !errorMessage()" class="table-container">
+      <div *ngIf="students().length === 0" class="empty-state">
+        <p>No student records found in the database.</p>
+      </div>
+
+      <table *ngIf="students().length > 0" class="premium-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Date of Birth</th>
+            <th>Course</th>
+            <th>Registration Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students()">
+            <td><span class="student-id">#{{ student.id }}</span></td>
+            <td>
+              <div class="student-name">
+                {{ student.firstName }} {{ student.lastName }}
+              </div>
+            </td>
+            <td><span class="student-email">{{ student.email }}</span></td>
+            <td>{{ student.phoneNumber }}</td>
+            <td>{{ student.dateOfBirth | date:'mediumDate' }}</td>
+            <td><span class="course-badge">{{ student.course }}</span></td>
+            <td>{{ student.registrationDate | date:'mediumDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
