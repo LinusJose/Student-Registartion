@@ -1,1 +1,104 @@
-<p>student-registration works!</p>
+<div class="registration-container">
+  <div class="registration-card">
+    <h2>Add New Student</h2>
+    <p>Please enter the details of the student to register them</p>
+
+    <!-- (ngSubmit) links the form submission to our TS onSubmit() method -->
+    <form (ngSubmit)="onSubmit()" #regForm="ngForm" class="registration-form">
+      
+      <div class="form-row">
+        <!-- First Name (Required) -->
+        <div class="form-group">
+          <label for="firstName">First Name <span class="required">*</span></label>
+          <input 
+            type="text" 
+            id="firstName" 
+            name="firstName" 
+            [(ngModel)]="firstName" 
+            placeholder="John" 
+            required
+          />
+        </div>
+
+        <!-- Last Name (Required) -->
+        <div class="form-group">
+          <label for="lastName">Last Name <span class="required">*</span></label>
+          <input 
+            type="text" 
+            id="lastName" 
+            name="lastName" 
+            [(ngModel)]="lastName" 
+            placeholder="Doe" 
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- Email (Required) -->
+        <div class="form-group">
+          <label for="email">Email Address <span class="required">*</span></label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            [(ngModel)]="email" 
+            placeholder="john.doe@example.com" 
+            required
+          />
+        </div>
+
+        <!-- Phone Number (Required) -->
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number <span class="required">*</span></label>
+          <input 
+            type="text" 
+            id="phoneNumber" 
+            name="phoneNumber" 
+            [(ngModel)]="phoneNumber" 
+            placeholder="555-0199" 
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- Date of Birth (Required) -->
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+          <input 
+            type="date" 
+            id="dateOfBirth" 
+            name="dateOfBirth" 
+            [(ngModel)]="dateOfBirth" 
+            required
+          />
+        </div>
+
+        <!-- Course (Optional - No asterisk) -->
+        <div class="form-group">
+          <label for="course">Course / Department</label>
+          <input 
+            type="text" 
+            id="course" 
+            name="course" 
+            [(ngModel)]="course" 
+            placeholder="Engineering"
+          />
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()">
+          Cancel
+        </button>
+        <!-- The button remains disabled until all required fields are filled out -->
+        <button type="submit" class="btn-submit" [disabled]="!regForm.valid">
+          Submit
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
