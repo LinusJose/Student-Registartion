@@ -4,7 +4,10 @@
       <h1>Student Registry</h1>
       <p class="subtitle">Real-time student enrollment and records system</p>
     </div>
-    <div class="header-right">
+    <div class="header-right" style="display: flex; gap: 1rem;">
+      <button class="btn btn-primary" routerLink="/student-registration">
+        ➕ Add Student
+      </button>
       <button class="btn btn-secondary" (click)="fetchStudents()">
         🔄 Refresh
       </button>

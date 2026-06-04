@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 export interface Student {
   id: number;
@@ -21,7 +22,7 @@ export interface ApiResponse {
 
 @Component({
   selector: 'app-student-dashboard',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './student-dashboard.component.html',
   styleUrl: './student-dashboard.component.css',
 })
