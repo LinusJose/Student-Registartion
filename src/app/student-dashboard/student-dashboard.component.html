@@ -4,7 +4,10 @@
       <h1>Student Registry</h1>
       <p class="subtitle">Real-time student enrollment and records system</p>
     </div>
-    <div class="header-right">
+    <div class="header-right" style="display: flex; gap: 1rem;">
+      <button class="btn btn-primary" routerLink="/student-registration">
+        ➕ Add Student
+      </button>
       <button class="btn btn-secondary" (click)="fetchStudents()">
         🔄 Refresh
       </button>
@@ -35,6 +38,7 @@
       <table *ngIf="students().length > 0" class="premium-table">
         <thead>
           <tr>
+            <th>Actions</th>
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
@@ -46,6 +50,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let student of students()">
+            <td>
+              <div class="action-buttons">
+                <button class="action-btn edit-btn" title="Edit">✏️</button>
+                <button class="action-btn view-btn" title="View">👁️</button>
+                <button class="action-btn delete-btn" title="Delete">🗑️</button>
+              </div>
+            </td>
             <td><span class="student-id">#{{ student.id }}</span></td>
             <td>
               <div class="student-name">
