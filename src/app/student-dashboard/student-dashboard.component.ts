@@ -58,4 +58,31 @@ export class StudentDashboard implements OnInit {
       }
     });
   }
+  // Method to delete a student by their ID
+  deleteStudent(id: number) {
+    // 1. Show a confirmation dialog so the user doesn't delete by accident
+    const confirmDelete = confirm(`Are you sure you want to delete student #${id}?`);
+    
+    if (confirmDelete) {
+      // 2. Make a DELETE request to your C# API
+      this.http.delete(`https://localhost:7069/api/student/StudentDelete/${id}`)
+        .subscribe({
+          next: (response: any) => {
+            if (response && response.status === 'Success') {
+              alert('Student deleted successfully!');
+              
+              // 3. Refresh the table list so the deleted student disappears
+              this.fetchStudents();
+            } else {
+              alert('Failed to delete student: ' + response.message);
+            }
+          },
+          error: (err) => {
+            console.error('Delete error:', err);
+            alert('An error occurred. Make sure your C# API backend is running!');
+          }
+        });
+    }
+  }
+
 }

@@ -52,9 +52,9 @@
           <tr *ngFor="let student of students()">
             <td>
               <div class="action-buttons">
-                <button class="action-btn edit-btn" title="Edit">✏️</button>
+                <button class="action-btn edit-btn" title="Edit" [routerLink]="['/student-registration']" [queryParams]="{ id: student.id }">✏️</button>
                 <button class="action-btn view-btn" title="View">👁️</button>
-                <button class="action-btn delete-btn" title="Delete">🗑️</button>
+                <button class="action-btn delete-btn" title="Delete" (click)="deleteStudent(student.id)">🗑️</button>
               </div>
             </td>
             <td><span class="student-id">#{{ student.id }}</span></td>

@@ -1,13 +1,13 @@
 <div class="registration-container">
   <div class="registration-card">
-    <h2>Add New Student</h2>
+    <!-- Displays Dynamic Title depending on Add/Edit mode -->
+    <h2>{{ isEditMode ? 'Edit Student Details' : 'Add New Student' }}</h2>
     <p>Please enter the details of the student to register them</p>
 
-    <!-- (ngSubmit) links the form submission to our TS onSubmit() method -->
     <form (ngSubmit)="onSubmit()" #regForm="ngForm" class="registration-form">
       
       <div class="form-row">
-        <!-- First Name (Required) -->
+        <!-- First Name -->
         <div class="form-group">
           <label for="firstName">First Name <span class="required">*</span></label>
           <input 
@@ -20,7 +20,7 @@
           />
         </div>
 
-        <!-- Last Name (Required) -->
+        <!-- Last Name -->
         <div class="form-group">
           <label for="lastName">Last Name <span class="required">*</span></label>
           <input 
@@ -35,7 +35,7 @@
       </div>
 
       <div class="form-row">
-        <!-- Email (Required) -->
+        <!-- Email -->
         <div class="form-group">
           <label for="email">Email Address <span class="required">*</span></label>
           <input 
@@ -48,7 +48,7 @@
           />
         </div>
 
-        <!-- Phone Number (Required) -->
+        <!-- Phone Number -->
         <div class="form-group">
           <label for="phoneNumber">Phone Number <span class="required">*</span></label>
           <input 
@@ -63,7 +63,7 @@
       </div>
 
       <div class="form-row">
-        <!-- Date of Birth (Required) -->
+        <!-- Date of Birth -->
         <div class="form-group">
           <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
           <input 
@@ -75,7 +75,7 @@
           />
         </div>
 
-        <!-- Course (Optional - No asterisk) -->
+        <!-- Course -->
         <div class="form-group">
           <label for="course">Course / Department</label>
           <input 
@@ -93,9 +93,9 @@
         <button type="button" class="btn-cancel" (click)="onCancel()">
           Cancel
         </button>
-        <!-- The button remains disabled until all required fields are filled out -->
+        <!-- Displays Dynamic Button Text -->
         <button type="submit" class="btn-submit" [disabled]="!regForm.valid">
-          Submit
+          {{ isEditMode ? 'Update' : 'Submit' }}
         </button>
       </div>
 
