@@ -48,11 +48,12 @@ export class StudentDashboard implements OnInit {
         }
         this.isLoading.set(false);
 
-        
+
       },
       error: () => {
         this.errorMessage.set('Could not fetch student data. Please check if the API server is running.');
         this.isLoading.set(false);
+        
       }
     });
   }
